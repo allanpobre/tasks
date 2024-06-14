@@ -18,7 +18,9 @@ export default class task_list extends Componet{
                     </View>
                 </ImageBackground>
                 <View style={styles.taskList}>
-                    <Text>Lista de Tarefas:</Text>
+                    <Task/>
+                    <Task/>
+                    <Task/>
                 </View>
             </View>
         )
