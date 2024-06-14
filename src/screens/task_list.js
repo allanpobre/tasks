@@ -1,18 +1,26 @@
-import React, {Component} from "react";
-import { StyleSheet, View, Text, ImageBackground } from "react-native";
+import React, {Component} from "react"
+import { StyleSheet, View, Text, ImageBackground } from "react-native"
+import moment from "moment"
+import 'moment/locale/pt-br'
 
 import today_image from '../../assets/imgs/today.jpg'
 
 export default class task_list extends Componet{
     render(){
-        <View style={styles.container} source={styles.background}>
-            <ImageBackground source={today_image}>
-
-            </ImageBackground>
-            <View style={styles.taskList}>
-                <Text>Lista de Tarefas:</Text>
+        const today = moment().locale('pt-br').format('ddd, DD [de] MMMM [de] YYYY')
+        return(
+            <View style={styles.container} source={styles.background}>
+                <ImageBackground source={today_image} style={styles.background}>
+                    <View style={styles.titleBar}>
+                        <Text style={styles.title}>Hoje</Text>
+                        <Text style={styles.subtitle}>14/06/2024</Text>
+                    </View>
+                </ImageBackground>
+                <View style={styles.taskList}>
+                    <Text>Lista de Tarefas:</Text>
+                </View>
             </View>
-        </View>
+        )
     } 
 }
 
@@ -25,5 +33,23 @@ const styles = StyleSheet.create({
     },
     taskList:{
         flex: 7
+    },
+    titleBar:{
+        flex: 1,
+        justifyContent: 'flex-end',
+    },
+    title:{
+        fontFamily: 'Arial',
+        fontSize: 50,
+        color: '#fff',
+        marginLeft: 20,
+        marginBottom: 20
+    },
+    subtitle:{
+        fontFamily: 'Arial',
+        fontSize: 20,
+        color: '#fff',
+        marginLeft: 20,
+        marginBottom: 30
     }
 })
