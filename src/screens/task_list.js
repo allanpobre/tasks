@@ -2,6 +2,7 @@ import React, {Component} from "react"
 import { StyleSheet, View, Text, ImageBackground } from "react-native"
 import moment from "moment"
 import 'moment/locale/pt-br'
+import Taks from "../components/Taks"
 
 import today_image from '../../assets/imgs/today.jpg'
 
