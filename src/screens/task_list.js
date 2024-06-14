@@ -2,9 +2,10 @@ import React, {Component} from "react"
 import { StyleSheet, View, Text, ImageBackground } from "react-native"
 import moment from "moment"
 import 'moment/locale/pt-br'
-import Taks from "../components/Taks"
+import Taks from "../components/Task"
 
 import today_image from '../../assets/imgs/today.jpg'
+import Task from "../components/Task"
 
 export default class task_list extends Componet{
     render(){
