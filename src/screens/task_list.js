@@ -15,12 +15,12 @@ export default class task_list extends Componet{
                 <ImageBackground source={today_image} style={styles.background}>
                     <View style={styles.titleBar}>
                         <Text style={styles.title}>Hoje</Text>
-                        <Text style={styles.subtitle}>14/06/2024</Text>
+                        <Text style={styles.subtitle}>{today}</Text>
                     </View>
                 </ImageBackground>
                 <View style={styles.taskList}>
-                    <Task/>
-                    <Task/>
+                    <Task description="Estudo para prova do Hereman" estimate_at={new Date()} done_at={new Date()}/>
+                    <Task description="Fazer prova do Hereman" estimate_at={new Date()} done_at={null}/>
                     <Task/>
                 </View>
             </View>

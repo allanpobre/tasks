@@ -1,15 +1,23 @@
-import React, {Component} from "react"
-import { StyleSheet, View, Text } from "react-native"
+import React from "react"
+import { StyleSheet, View, Text, TouchableWithoutFeedback} from "react-native"
 import moment from "moment"
 import 'moment/locale/pt-br'
+import { Icon } from "react-native-vector-icons/FontAwesome6"
 
 export default props => {
     return(
         <View style={styles.container}>
+            <TouchableWithoutFeedback onPress={() => alert("olá")}>
+                <View style={styles.checkCountainer}>
+                    <View style={styles.done}>
+                        <Icon name="check" size={20}></Icon>
+                    </View>
+                </View>
+            </TouchableWithoutFeedback>
             <View>
                 <Text style={styles.desc}>{props.description}</Text>
-                <Text style={styles.desc}>{props.estimate_at}</Text>
-                <Text style={styles.desc}>{props.date_at}</Text>
+                <Text style={styles.desc}>{props.estimate_at + " "}</Text>
+                <Text style={styles.desc}>{props.done_at + " "}</Text>
             </View>
         </View>
     )
@@ -30,5 +38,19 @@ const styles = StyleSheet({
     date:{
         fontFamily: 'Arial',
         color: '3555'
+    },
+    checkCountainer:{
+        width: '20%',
+        alignItems: 'center',
+        justifyCenter: 'center'
+    },
+    done:{
+        height: 25,
+        widht: 25,
+        borderRadius: 13,
+        borderWidth: 1,
+        backgroundColor: '#4D7031',
+        alignItems: 'center',
+        justifyCenter: 'center'
     }
 })
