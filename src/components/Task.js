@@ -9,9 +9,7 @@ export default props => {
         <View style={styles.container}>
             <TouchableWithoutFeedback onPress={() => alert("olá")}>
                 <View style={styles.checkCountainer}>
-                    <View style={styles.done}>
-                        <Icon name="check" size={20}></Icon>
-                    </View>
+                    
                 </View>
             </TouchableWithoutFeedback>
             <View>
@@ -23,8 +21,26 @@ export default props => {
     )
 }
 
+function get_check_view(done_at){
+    if(done_at != null){
+        return(
+            <View style={styles.done}>
+                <Icon name="check" size={20}></Icon>
+            </View>
+        )
+    }
+    else{
+        return(
+            <View style={styles.pending}>
+                <Icon name="check" size={20}></Icon>
+            </View>
+        )
+    }
+}
+
 const styles = StyleSheet({
     container:{
+        flexDirection: 'row',
         borderColor: '#AAA',
         borderBottomWidth: 1,
         alignItems: 'center',
@@ -52,5 +68,12 @@ const styles = StyleSheet({
         backgroundColor: '#4D7031',
         alignItems: 'center',
         justifyCenter: 'center'
+    },
+    pending:{
+        height: 25,
+        widht: 25,
+        borderRadius: 13,
+        borderWidth: 1,
+        borderColor: '#555555'
     }
 })
