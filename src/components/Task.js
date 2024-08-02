@@ -5,6 +5,8 @@ import 'moment/locale/pt-br'
 import  Icon  from "react-native-vector-icons/FontAwesome6"
 
 export default props => {
+    const date = props.done_at != null ? props.done_at : props.estimate_at
+    const formated_date = moment(date).format('dddd, DD [de] MMM')
     return(
         <View style={styles.container}>
             <TouchableWithoutFeedback onPress={() => alert("olá")}>
@@ -14,8 +16,7 @@ export default props => {
             </TouchableWithoutFeedback>
             <View>
                 <Text style={styles.desc}>{props.description}</Text>
-                <Text style={styles.desc}>{props.estimate_at + " "}</Text>
-                <Text style={styles.desc}>{props.done_at + " "}</Text>
+                <Text style={styles.desc}>{formated_date}</Text>
             </View>
         </View>
     )
