@@ -2,7 +2,7 @@ import React from "react"
 import { StyleSheet, View, Text, TouchableWithoutFeedback} from "react-native"
 import moment from "moment"
 import 'moment/locale/pt-br'
-import { Icon } from "react-native-vector-icons/FontAwesome6"
+import  Icon  from "react-native-vector-icons/FontAwesome6"
 
 export default props => {
     return(
@@ -25,7 +25,7 @@ function get_check_view(done_at){
     if(done_at != null){
         return(
             <View style={styles.done}>
-                <Icon name="check" size={20}></Icon>
+                <Icon name="check" size={20} color="#FFF"></Icon>
             </View>
         )
     }
