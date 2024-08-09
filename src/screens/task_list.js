@@ -34,6 +34,7 @@ export default class task_list extends Component{
                 task.done_at = task.done_at ? null : new Date() 
             }
         })
+        this.setState({tasks})
     }
 
     render(){
@@ -49,6 +50,7 @@ export default class task_list extends Component{
                 <View style={styles.taskList}>
                 <FlatList 
                 data = {this.state.tasks}
+                keyExtractor = {item => '${item.id}'}
                 renderItem={({item}) => <Task{...item} toggle_task = {this.toggle_task}/>}
                 />
                     {/* <Task description="Estudo para prova do Hereman" estimate_at={new Date()} done_at={new Date()}/>
