@@ -1,20 +1,22 @@
 import React, {Component} from "react"
-import { StyleSheet, View, Text, ImageBackground } from "react-native"
+import { StyleSheet, View, Text, ImageBackground, FlatList } from "react-native"
 import moment from "moment"
 import 'moment/locale/pt-br'
-import Taks from "../components/Task"
+import Task from "../components/Task"
 
 import today_image from '../../assets/imgs/today.jpg'
 import Task from "../components/Task"
 
-export default class task_list extends Componet{
+export default class task_list extends Component{
 
     state = {
         show_done_task: true, 
         visible_task: [],
         tasks: [{
             id: Math.random(),
-            description: "Estudar para prova de DDM I"
+            description: "Estudar para prova de DDM I",
+            estimate_at: moment(new Date()).add(5, "days"),
+            done_at: null
         },
         {
             id: Math.random(),
@@ -45,6 +47,10 @@ export default class task_list extends Componet{
                     </View>
                 </ImageBackground>
                 <View style={styles.taskList}>
+                <FlatList 
+                data = {this.state.tasks}
+                renderItem={({item}) => <Task{...item} toggle_task = {this.toggle_task}/>}
+                />
                     {/* <Task description="Estudo para prova do Hereman" estimate_at={new Date()} done_at={new Date()}/>
                     <Task description="Fazer prova do Hereman" estimate_at={new Date()} done_at={null}/> */}
                     <Task/>
