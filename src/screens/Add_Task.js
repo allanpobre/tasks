@@ -1,10 +1,13 @@
 import React, {Component} from "react";
 import {Text, TextInput, View, StyleSheet, TouchableOpacity, TouchableWithoutFeedback, Modal} from "react-native";
+import Icon from "react-native-vector-icons/FontAwesome6";
+import moment from "moment";
+import DateTimePicker from "@react-native-community/datetimepicker"
 
 export default class AddTask extends Component{
     render(){
         return(
-            <Modal transparent={true} visible={true} animationType="slide">
+            <Modal transparent={true} visible={this.props.visivel} onRequestClose={this.props.cancelar} animationType="slide">
                 <TouchableWithoutFeedback>
 
                     <View style={styles.fundo}></View>
@@ -13,20 +16,26 @@ export default class AddTask extends Component{
 
                     <View style={styles.principal}>
                         <Text style={styles.cabecalho}>Nova tarefa</Text>
-                        <TextInput 
-                            placeholder="Descrição da tarefa"
-                            style={styles.input}/>
-                        <View>
-
-                            <TouchableOpacity>
-                                <Text>Cancelar</Text>
+                        <View style={styles.container}>
+                            <Icon name="clipboard-check" size={25}></Icon>
+                            <TextInput style = {styles.input}
+                                placeholder="Descrição da tarefa"
+                            />
+                        </View>
+                        <TouchableOpacity style={styles.container}>
+                            <Icon name="calendar" size={25}></Icon>
+                            <Text style={styles.data}>Data Atual</Text>
+                        </TouchableOpacity>
+                        <View style={styles.botoes}>
+                            <TouchableOpacity onPress={this.props.cancelar}>
+                                <Text style={styles.botao}>Cancelar</Text>
                             </TouchableOpacity>
-                            <TouchableOpacity>
-                                <Text>Salvar</Text>
+                            <TouchableOpacity onPress={this.props.cancelar}>
+                                <Text style={styles.botao}>Salvar</Text>
                             </TouchableOpacity>
                         </View>
                     </View>
-                <TouchableWithoutFeedback>
+                <TouchableWithoutFeedback onPress={this.props.cancelar}>
                     <View style={style.fundo}></View>
                 </TouchableWithoutFeedback>
 
@@ -49,6 +58,31 @@ const style = StyleSheet.create({
         color: '#FFF',
         fontSize: 20,
         textAlign: 'center',
-        padding: 15
+        padding: 25
     },
+    input:{
+        width: '85%',
+        margin: 15,
+        borderWidth: 1,
+        borderColor: '#E3E3E3',
+        borderRadius: 6
+    },
+    container:{
+        flexDirection:'row',
+        alignItems:'center',
+        marginLeft: 15,
+        paddingVertical: 10
+    },
+    botoes:{
+        flexDirection: 'row',
+        justifyContent: 'flex-end'
+    },
+    botao:{
+        margin:20,
+        marginRight: 30,
+        color: '#B13B44'
+    },
+    data:{
+        margin: 10
+    }
 })
